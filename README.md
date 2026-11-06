@@ -1,5 +1,7 @@
 # Enamul Haque — FDE Portfolio
 
+[Visit the portfolio](https://fde-portfolio-eta.vercel.app)
+
 A portfolio of enterprise data integration, Palantir Foundry applications, workflow automation and independent software projects. It connects Enamul’s professional experience as a Data Scientist with four practical case studies: FleetPulse, FleetCare, ServicePlan and Fatal Figures.
 
 Built with Next.js App Router, TypeScript and React. The homepage and case studies are statically rendered; a small client component handles section navigation and the mobile menu.

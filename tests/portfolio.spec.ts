@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { projects } from "../content/projects";
 import { sections, profile } from "../content/profile";
+import { productionOrigin } from "../content/site";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
@@ -18,6 +19,24 @@ test("approved content, project order, responsive grids and assets", async ({
       .locator("main>section[id]")
       .evaluateAll((els) => els.map((el) => el.id)),
   ).toEqual(sections.map(([id]) => id));
+  if (productionOrigin) {
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      productionOrigin,
+    );
+    await expect(
+      page.locator('meta[property="og:image"]').first(),
+    ).toHaveAttribute("content", `${productionOrigin}/social-preview.png`);
+    const sitemap = await page.request.get("/sitemap.xml");
+    expect(sitemap.status()).toBe(200);
+    expect((await sitemap.text()).match(/<loc>/g)).toHaveLength(5);
+    expect(await sitemap.text()).not.toContain("localhost");
+    const robots = await page.request.get("/robots.txt");
+    expect(await robots.text()).toContain(`${productionOrigin}/sitemap.xml`);
+  }
+  expect(await page.locator("body").ariaSnapshot()).not.toContain(
+    "Download CV",
+  );
   await expect(page.locator(".skill-card")).toHaveCount(6);
   expect(
     await page.locator(".project-card .eyebrow").allTextContents(),
