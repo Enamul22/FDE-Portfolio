@@ -43,21 +43,23 @@ export function ProjectCard({
           ))}
         </ul>
         <div className="project-actions">
+          <Link className="case-link" href={`/projects/${project.slug}`}>
+            Case Study <span aria-hidden="true">→</span>
+          </Link>
           <ExternalLink
             href={project.live}
-            label={`${project.slug === "fatal-figures" ? "Play Game" : "Live Demo"}: ${project.name}`}
+            className="demo-link"
+            label={`Live Demo: ${project.name}`}
           >
-            {project.slug === "fatal-figures" ? "Play Game" : "Live Demo"}
+            Live Demo
           </ExternalLink>
           <ExternalLink
             href={project.github}
+            className="source-link"
             label={`${project.name} on GitHub`}
           >
             GitHub
           </ExternalLink>
-          <Link className="case-link" href={`/projects/${project.slug}`}>
-            Case Study <span aria-hidden="true">→</span>
-          </Link>
         </div>
       </div>
     </article>

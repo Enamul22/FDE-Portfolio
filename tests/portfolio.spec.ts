@@ -60,13 +60,30 @@ test("approved content, project order, responsive grids and assets", async ({
   await expect(
     page.getByRole("link", { name: /Verify credential/ }),
   ).toHaveAttribute("href", "https://verify.skilljar.com/c/v93rk4vv64bs");
-  for (const p of projects) {
-    await expect(
-      page.getByRole("link", {
-        name: `${p.slug === "fatal-figures" ? "Play Game" : "Live Demo"}: ${p.name}`,
-        exact: true,
-      }),
-    ).toHaveAttribute("href", p.live);
+  await expect(page.locator(".wordmark")).toHaveText("Enamul Haque");
+  expect(
+    await page.locator("#hero-title > span").evaluate((statement) => {
+      const size = (element: Element) =>
+        parseFloat(getComputedStyle(element).fontSize);
+      return size(statement) < size(statement.parentElement!);
+    }),
+  ).toBe(true);
+  await expect(
+    page.getByRole("link", { name: "Independent portfolio work" }),
+  ).toHaveAttribute("href", "https://github.com/Enamul22/FDE-Portfolio");
+  const actions = await page.locator(".project-actions").all();
+  for (const [index, project] of projects.entries()) {
+    const links = actions[index].getByRole("link");
+    await expect(links).toHaveText([/^Case Study/, /^Live Demo/, /^GitHub/]);
+    expect(
+      await links.evaluateAll((elements) =>
+        elements.map((el) => el.getAttribute("href")),
+      ),
+    ).toEqual([`/projects/${project.slug}`, project.live, project.github]);
+    const colors = await links.evaluateAll((elements) =>
+      elements.map((el) => getComputedStyle(el).color),
+    );
+    expect(new Set(colors).size).toBe(3);
   }
   for (const l of profile.links)
     expect(

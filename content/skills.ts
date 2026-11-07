@@ -20,7 +20,7 @@ export const skills: Skill[] = [
   },
   {
     title: "Palantir Foundry & Ontology",
-    statement: "Model assets, relationships and operational actions.",
+    statement: "Enterprise data relationship and operational action.",
     groups: [
       "Palantir Foundry · Pipeline Builder · Code Repositories",
       "Ontology · Object/link modelling · Actions",
@@ -52,8 +52,8 @@ export const skills: Skill[] = [
       "Health scoring · Peer benchmarking · Model evaluation",
     ],
     links: [
+      { label: "Metso experience", href: "#experience" },
       { label: "FleetPulse case study", href: "/projects/fleetpulse" },
-      { label: "FleetCare case study", href: "/projects/fleetcare" },
     ],
   },
   {
@@ -67,7 +67,7 @@ export const skills: Skill[] = [
     links: [{ label: "Metso experience & impact", href: "#experience" }],
   },
   {
-    title: "Full-Stack Application Development",
+    title: "Application Development",
     statement:
       "Deliver interactive applications with persistent data and real-time behaviour.",
     groups: [
@@ -75,7 +75,10 @@ export const skills: Skill[] = [
       "PostgreSQL · Git/GitHub · Render",
     ],
     links: [
-      { label: "Independent portfolio work", href: "#projects" },
+      {
+        label: "Independent portfolio work",
+        href: "https://github.com/Enamul22/FDE-Portfolio",
+      },
       { label: "Fatal Figures case study", href: "/projects/fatal-figures" },
     ],
   },

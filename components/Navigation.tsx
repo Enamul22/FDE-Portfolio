@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { sections } from "@/content/profile";
+import { profile, sections } from "@/content/profile";
 export function Navigation() {
   const pathname = usePathname();
   const [active, setActive] = useState("home");
@@ -47,9 +47,9 @@ export function Navigation() {
           className="wordmark"
           href="/#home"
           onClick={() => setOpen(false)}
-          aria-label="Enamul Haque, home"
+          aria-label={`${profile.name}, home`}
         >
-          enamul<span aria-hidden="true">.</span>
+          {profile.name}
         </Link>
         <button
           ref={button}

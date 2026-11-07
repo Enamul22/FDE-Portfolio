@@ -25,7 +25,8 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Data systems. Human decisions.</p>
           <h1 id="hero-title">
-            Enamul Haque<span>{profile.statement}</span>
+            {profile.name}
+            <span>{profile.statement}</span>
           </h1>
           <p className="hero-headline">{profile.headline}</p>
           <p className="hero-intro">{profile.intro}</p>
@@ -70,10 +71,10 @@ export default function Home() {
         <div className="container split-section">
           <div>
             <p className="eyebrow">
-              <span>01</span>About me
+              <span>01</span>About
             </p>
             <h2 id="about-title">
-              Grounded in statistics.
+              Grounded in Statistics &amp; Data Analytics
               <br />
               Built for action.
             </h2>
@@ -91,6 +92,7 @@ export default function Home() {
             >
               {[
                 "Enterprise sources",
+                "Data integration",
                 "Pipelines",
                 "Ontology",
                 "Applications",
@@ -305,8 +307,8 @@ export default function Home() {
           </div>
           <div>
             <p className="contact-copy">
-              I’m interested in forward-deployed engineering and operational
-              data/application roles—working with people to turn complex
+              I’m interested in forward-deployed engineer/data &amp; analytics
+              engineer related roles—working with similar minds to turn complex
               problems into useful, dependable systems.
             </p>
             <a className="contact-email" href={`mailto:${profile.email}`}>

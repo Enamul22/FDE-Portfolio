@@ -12,8 +12,7 @@ export type Profile = {
 };
 export const profile: Profile = {
   name: "Enamul Haque",
-  headline:
-    "Data Scientist · Palantir Foundry · Data & Application Engineering",
+  headline: "Forward Deployed Engineer · Palantir Foundry",
   statement: "Building data systems that turn insight into action.",
   intro:
     "Over four years at Metso, I’ve worked from enterprise data sources through to operational applications—connecting reliable data, analytical evidence and the people who act on it.",
@@ -33,7 +32,7 @@ export const profile: Profile = {
     },
   ],
   about: [
-    "My foundation is in statistics: asking useful questions, understanding variation and making evidence understandable. At Metso, I apply that thinking to industrial data, equipment condition and the practical needs of maintenance and service teams.",
+    "My foundation is in statistics and data analytics: asking useful questions, understanding variation and making evidence understandable. At Metso, I apply that thinking to industrial data, equipment condition and the practical needs of maintenance and service teams.",
     "I enjoy owning the connections between stages of a workflow—preparing dependable data, modelling operational relationships, building useful applications and bringing feedback back into the data model. My independent projects give me another space to explore that complete delivery process.",
   ],
 };
@@ -43,7 +42,7 @@ export function validCvUrl(url: string | null): url is string {
 }
 export const sections = [
   ["home", "Home"],
-  ["about", "About me"],
+  ["about", "About"],
   ["skills", "Skills"],
   ["experience", "Professional experience"],
   ["projects", "Projects"],
