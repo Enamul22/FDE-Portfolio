@@ -49,10 +49,6 @@ export default async function CaseStudy({
         <span>{p.name}</span>
       </nav>
       <header className="case-header">
-        <p className="eyebrow">
-          Independent portfolio project · {String(index + 1).padStart(2, "0")} /
-          04
-        </p>
         <h1>
           {p.name}
           <span>{p.title}</span>

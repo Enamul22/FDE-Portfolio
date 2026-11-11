@@ -250,7 +250,10 @@ export default function Home() {
                 {e.scholarship && (
                   <div className="scholarship">
                     <p className="eyebrow">Scholarship</p>
-                    <p>{e.scholarship}</p>
+                    <p>
+                      {e.scholarship.title} · {e.scholarship.organization}
+                    </p>
+                    <p className="date">{e.scholarship.dates}</p>
                   </div>
                 )}
               </article>
@@ -308,8 +311,8 @@ export default function Home() {
           <div>
             <p className="contact-copy">
               I’m interested in forward-deployed engineer/data &amp; analytics
-              engineer related roles—working with similar minds to turn complex
-              problems into useful, dependable systems.
+              roles where I can work with engineers and domain experts to turn
+              complex operational problems into practical, reliable systems.
             </p>
             <a className="contact-email" href={`mailto:${profile.email}`}>
               {profile.email} <span aria-hidden="true">↗</span>

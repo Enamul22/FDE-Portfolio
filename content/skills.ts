@@ -20,7 +20,8 @@ export const skills: Skill[] = [
   },
   {
     title: "Palantir Foundry & Ontology",
-    statement: "Enterprise data relationship and operational action.",
+    statement:
+      "Model enterprise data relationships and connect them to operational actions.",
     groups: [
       "Palantir Foundry · Pipeline Builder · Code Repositories",
       "Ontology · Object/link modelling · Actions",

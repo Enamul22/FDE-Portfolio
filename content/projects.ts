@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "Explained investigation",
     ],
     contribution:
-      "I developed this AI-assisted portfolio application from the scoring and peer policies through the prepared data pipeline, explanations and interactive interface. The emphasis is on making every displayed comparison traceable to its inputs.",
+      "I defined the health-scoring approach, peer-matching criteria and explanations, then translated them into detailed implementation prompts for Codex. Through iterative debugging and validation, I refined the data pipeline and interface so each displayed comparison could be traced back to its inputs.",
     decisions: [
       {
         title: "A healthy reference before a relative comparison",
@@ -116,7 +116,7 @@ export const projects: Project[] = [
       "Technical feedback",
     ],
     contribution:
-      "I used AI-assisted development to build and validate the complete demonstration: fault episodes, evidence views, maintenance recommendations, role-based work orders and joined customer feedback. It illustrates an operational workflow independently of my employer’s systems.",
+      "I designed the complete fault-to-feedback workflow, from sensor evidence and maintenance recommendations to customer work orders and technical responses. I guided implementation with Codex through structured planning and prompting, then refined the application through debugging, workflow review and validation of access controls and saved history.",
     decisions: [
       {
         title: "Evidence follows the episode",
@@ -183,7 +183,7 @@ export const projects: Project[] = [
       "Durable service history",
     ],
     contribution:
-      "I developed the AI-assisted application around an explicit scheduling policy, package catalogue and transactional service workflow, then tested the interface and persistence across customer sign-out and process restart.",
+      "I specified the mileage rules, combined service packages and customer completion requirements, then guided development with Codex through detailed prompts and iterative refinement. Debugging and validation focused on scheduling edge cases, task and parts checks, and retaining service history across sign-out and application restarts.",
     decisions: [
       {
         title: "Keep the milestone fixed",
@@ -251,7 +251,7 @@ export const projects: Project[] = [
       "Replay & rematch",
     ],
     contribution:
-      "I developed this AI-assisted project from the rule specification through the server-authoritative engine, real-time interface, transactional storage, verification and deployment. The animated table presents the existing state without controlling game deadlines.",
+      "I designed the game rules, elimination phases and playing-room experience, then used Codex to develop the implementation through structured prompts and iterative debugging. Repeated playtesting and validation shaped the scoring, private choices, reconnect behaviour and interface, taking the game from a console experiment to a deployed multiplayer application.",
     decisions: [
       {
         title: "The server owns the outcome",

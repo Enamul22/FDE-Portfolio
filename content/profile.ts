@@ -15,7 +15,7 @@ export const profile: Profile = {
   headline: "Forward Deployed Engineer · Palantir Foundry",
   statement: "Building data systems that turn insight into action.",
   intro:
-    "Over four years at Metso, I’ve worked from enterprise data sources through to operational applications—connecting reliable data, analytical evidence and the people who act on it.",
+    "Over four years at Metso, I’ve built end-to-end data solutions, integrating enterprise systems and delivering applications that help maintenance and service teams act on equipment insights.",
   location: "Tampere, Finland",
   email: "enamulhaque16022@gmail.com",
   showCvDownload: false,
