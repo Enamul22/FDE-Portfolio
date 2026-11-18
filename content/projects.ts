@@ -294,4 +294,158 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "onboarddesk",
+    name: "OnboardDesk",
+    title: "Corporate KYC Review Agent",
+    summary:
+      "Review company onboarding documents, trace missing or conflicting information to its source, and prepare an analyst-reviewed follow-up.",
+    highlights: [
+      "Evidence-linked document review",
+      "Analyst decisions & versioned history",
+    ],
+    tags: ["Python", "LangGraph", "Tool calling", "PostgreSQL"],
+    live: "https://onboarddesk-corporatekyc-reviewagent.streamlit.app/",
+    github: "https://github.com/Enamul22/OnboardDesk-CorporateKYC-ReviewAgent",
+    image: "/images/onboarddesk-overview.webp",
+    imageAlt:
+      "OnboardDesk company-case overview with document questions and examples for analyst review",
+    problem:
+      "Company information is scattered across onboarding documents. Missing fields and inconsistent details need to be traced to their sources before an analyst can prepare a useful follow-up.",
+    context:
+      "A demonstration with 60 fictional company cases, English PDFs and a versioned checklist. The application prepares a document-review pack; the analyst owns the review outcome.",
+    workflow: [
+      "Company records",
+      "Scoped document & checklist tools",
+      "Validated findings & evidence",
+      "Analyst decisions & draft follow-up",
+      "Revised documents & retained history",
+    ],
+    contribution:
+      "I framed the document-review problem, designed the analyst workflow and guided Codex through structured implementation prompts. Iterative debugging and validation focused on source-linked findings, explicit human decisions, revised documents and history that remains available after refresh or restart.",
+    decisions: [
+      {
+        title: "One bounded agent, exact checks",
+        body: "A single tool-using agent inspects scoped document pages and the checklist. Deterministic checks handle dates, identity comparisons and ownership arithmetic; request, time and tool limits bound execution.",
+      },
+      {
+        title: "Validate evidence before saving",
+        body: "Each cited reference must point to an inspected page in the current case and document version, with an excerpt that occurs in the source. Reference validity supports traceability; it does not prove every interpretation is correct.",
+      },
+      {
+        title: "Keep the analyst and history in the loop",
+        body: "An analyst can accept, correct or dismiss findings with reasons and edit the follow-up. Revised documents retain earlier reviews and decisions in PostgreSQL rather than silently carrying them into a new version.",
+      },
+    ],
+    validation: [
+      "The published live evaluation completed 19 of 22 attempted cases. Recall across all attempts was 70.8%, below the deterministic baseline’s 83.3%; higher completed-case recall did not offset failed runs.",
+      "All 38 cited references in completed live reviews passed automatic reference checks. Independent human assessment of semantic support remains pending.",
+      "Workflow, evidence, revision and persistence checks cover isolated visitors and recovery after refresh and process restart.",
+    ],
+    evidence: [
+      {
+        label: "Architecture & scoped tools",
+        href: "docs/ARCHITECTURE.md",
+      },
+      {
+        label: "Evaluation & limitations",
+        href: "docs/EVALUATION.md",
+      },
+      {
+        label: "Verification record",
+        href: "docs/VERIFICATION.md",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/onboarddesk-evidence.webp",
+        alt: "OnboardDesk source-evidence dialog quoting the conflicting registration identifier from an ownership document",
+        caption:
+          "A registration-identifier question links back to the exact ownership-document excerpt.",
+      },
+      {
+        src: "/images/onboarddesk-decisions.webp",
+        alt: "OnboardDesk phone view showing a saved analyst correction and finding-decision controls",
+        caption:
+          "A saved analyst correction explains how a funds question was addressed; decisions and follow-up remain under human review.",
+      },
+    ],
+  },
+  {
+    slug: "cashpilot",
+    name: "CashPilot",
+    title: "Corporate Cash-Flow Forecasting",
+    summary:
+      "Forecast seven-day business cash balances, explain potential shortfalls and explore the effect of delayed customer receipts.",
+    highlights: [
+      "Seven-day forecasts & shortfall alerts",
+      "Receipt-delay scenarios & review history",
+    ],
+    tags: ["Python", "Time-series forecasting", "scikit-learn", "PostgreSQL"],
+    live: "https://cashpilot-corporatecashflow.streamlit.app/",
+    github: "https://github.com/Enamul22/CashPilot-CorporateCashFlow",
+    image: "/images/cashpilot-overview.webp",
+    imageAlt:
+      "CashPilot account overview with computed forecast examples and account search",
+    problem:
+      "Cash-management users need advance visibility of possible shortfalls and the expected receipts and payments behind them. A forecast becomes useful when it supports investigation and a concrete planning scenario.",
+    context:
+      "A synthetic demonstration with 100 businesses and cash movements in EUR, SEK and CHF. Forecasts estimate seven daily closing balances, excluding intraday liquidity and available credit.",
+    workflow: [
+      "Reconciled transactions & schedule versions",
+      "Point-in-time snapshots",
+      "Scheduled & estimated cash flows",
+      "Seven-day closing balances",
+      "Review & receipt-delay scenario",
+    ],
+    contribution:
+      "I framed the business question, specified the forecasting and receipt-delay behaviour, and guided Codex through structured planning and implementation prompts. I refined the application through debugging and validation of ledger arithmetic, past-only inputs, model comparisons, scenario calculations and persistent review history.",
+    decisions: [
+      {
+        title: "Separate expected and remaining cash",
+        body: "Known scheduled receipts and payments remain separate from nonnegative estimates of remaining flows. Origin-specific matching prevents double counting while retaining timing and amount differences as forecast errors.",
+      },
+      {
+        title: "Compare models chronologically",
+        body: "A seasonal-naive baseline is compared with pooled gradient boosting. Validation selects the default before testing future origins for known businesses and a separate held-out set of businesses. Monetary errors stay within each currency.",
+      },
+      {
+        title: "Fast browsing, immutable originals",
+        body: "Forecasts are prepared offline. A receipt-delay scenario moves one scheduled receipt using arithmetic, keeps remaining-flow estimates fixed and leaves the original forecast unchanged. PostgreSQL stores reviews and named scenarios against that forecast origin.",
+      },
+    ],
+    validation: [
+      "Known-business shortfall recall improved from 56.5% with the baseline to 62.3% with gradient boosting. Unseen-business recall stayed at 61.1%, with two additional false alarms. These synthetic results do not establish real-bank performance.",
+      "Exact ledger reconciliation, future-information perturbation checks and scenario tests verify the data and arithmetic behind the displayed warnings.",
+      "Browser and PostgreSQL checks verify forecast-linked notes and scenarios, visitor isolation and saved history after refresh and a server restart.",
+    ],
+    evidence: [
+      {
+        label: "Architecture & cash-flow decomposition",
+        href: "docs/ARCHITECTURE.md",
+      },
+      {
+        label: "Forecast evaluation",
+        href: "docs/EVALUATION.md",
+      },
+      {
+        label: "Verification record",
+        href: "docs/VERIFICATION.md",
+      },
+    ],
+    gallery: [
+      {
+        src: "/images/cashpilot-outlook.webp",
+        alt: "CashPilot actual and forecast daily closing cash with an operating buffer and seven-day cash decline",
+        caption:
+          "The cash outlook connects an expected balance decline to scheduled movements and the operating buffer.",
+      },
+      {
+        src: "/images/cashpilot-scenario.webp",
+        alt: "CashPilot original and delayed-receipt balance paths with a scenario shortfall",
+        caption:
+          "Moving one receipt beyond the horizon reveals a potential shortfall while preserving the original forecast.",
+      },
+    ],
+  },
 ];

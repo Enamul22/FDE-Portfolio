@@ -211,8 +211,9 @@ export default function Home() {
             </p>
             <h2 id="projects-title">Ideas, made operational.</h2>
             <p className="section-intro">
-              Independent projects spanning explainable analytics, maintenance
-              workflows and real-time software.
+              Independent projects spanning explainable analytics, operational
+              workflows, document-review AI, cash-flow forecasting and real-time
+              software.
             </p>
           </div>
           <ExternalLink href={profile.links[0].href} className="text-link">
@@ -284,6 +285,7 @@ export default function Home() {
                 {c.organization} <span aria-hidden="true">·</span>{" "}
                 <time dateTime={c.completed}>{c.date}</time>
               </p>
+              <p className="credential-description">{c.description}</p>
               <p className="credential-id">Credential ID: {c.id}</p>
             </div>
             <ExternalLink className="button outline" href={c.url}>

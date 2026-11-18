@@ -54,4 +54,10 @@ export const imageDimensions: Record<
     width: 1440,
     height: 666,
   },
+  "/images/onboarddesk-overview.webp": { width: 1440, height: 617 },
+  "/images/onboarddesk-evidence.webp": { width: 1440, height: 617 },
+  "/images/onboarddesk-decisions.webp": { width: 390, height: 844 },
+  "/images/cashpilot-overview.webp": { width: 1440, height: 617 },
+  "/images/cashpilot-outlook.webp": { width: 1440, height: 673 },
+  "/images/cashpilot-scenario.webp": { width: 1440, height: 673 },
 };

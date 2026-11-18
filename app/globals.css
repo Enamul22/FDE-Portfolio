@@ -694,6 +694,14 @@ p + p {
   border-radius: 7px;
   padding: 32px;
 }
+.credential-card + .credential-card {
+  margin-top: 20px;
+}
+.credential-card .credential-description {
+  margin-top: 12px;
+  max-width: 68ch;
+  line-height: 1.65;
+}
 .credential-mark {
   font-size: 45px;
   font-family: Georgia, serif;

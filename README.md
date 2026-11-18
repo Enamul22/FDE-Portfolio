@@ -2,7 +2,7 @@
 
 [Visit the portfolio](https://fde-portfolio-eta.vercel.app)
 
-A portfolio of enterprise data integration, Palantir Foundry applications, workflow automation and independent software projects. It connects Enamul’s professional experience as a Data Scientist with four practical case studies: FleetPulse, FleetCare, ServicePlan and Fatal Figures.
+A portfolio of enterprise data integration, Palantir Foundry applications, workflow automation and independent software projects. It connects Enamul’s professional experience as a Data Scientist with six practical case studies: FleetPulse, FleetCare, ServicePlan, Fatal Figures, OnboardDesk and CashPilot.
 
 Built with Next.js App Router, TypeScript and React. The homepage and case studies are statically rendered; a small client component handles section navigation and the mobile menu.
 
@@ -59,4 +59,4 @@ The project uses Vercel’s Next.js build support. Set the production origin in 
 
 ## Assets
 
-Portrait and application screenshots: Enamul Haque. Screenshots are optimized copies from the four linked application repositories. Typography uses the system sans-serif stack. The favicon and social preview are original portfolio artwork.
+Portrait and application screenshots: Enamul Haque. Screenshots are optimized copies from the six linked application repositories. Typography uses the system sans-serif stack. The favicon and social preview are original portfolio artwork.

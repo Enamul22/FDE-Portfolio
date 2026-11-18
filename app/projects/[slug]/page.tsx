@@ -41,6 +41,7 @@ export default async function CaseStudy({
   const p = projects[index];
   if (!p) notFound();
   const next = projects[(index + 1) % projects.length];
+  const previous = projects[(index - 1 + projects.length) % projects.length];
   return (
     <main id="main-content" className="case-page container">
       <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -159,6 +160,7 @@ export default async function CaseStudy({
                   alt={g.alt}
                   width={imageDimensions[g.src].width}
                   height={imageDimensions[g.src].height}
+                  style={{ maxWidth: imageDimensions[g.src].width }}
                   sizes="(max-width: 900px) 94vw, 920px"
                 />
                 <figcaption>{g.caption}</figcaption>
@@ -179,7 +181,9 @@ export default async function CaseStudy({
         </div>
       </div>
       <nav className="next-project" aria-label="Project navigation">
-        <Link href="/#projects">← All projects</Link>
+        <Link href={`/projects/${previous.slug}`}>
+          ← Previous: {previous.name}
+        </Link>
         <Link href={`/projects/${next.slug}`}>Next: {next.name} →</Link>
       </nav>
     </main>

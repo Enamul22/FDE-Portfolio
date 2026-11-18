@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { projects } from "../content/projects";
 import { sections, profile } from "../content/profile";
+import { credentials } from "../content/credentials";
 import { productionOrigin } from "../content/site";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -29,7 +30,7 @@ test("approved content, project order, responsive grids and assets", async ({
     ).toHaveAttribute("content", `${productionOrigin}/social-preview.png`);
     const sitemap = await page.request.get("/sitemap.xml");
     expect(sitemap.status()).toBe(200);
-    expect((await sitemap.text()).match(/<loc>/g)).toHaveLength(5);
+    expect((await sitemap.text()).match(/<loc>/g)).toHaveLength(7);
     expect(await sitemap.text()).not.toContain("localhost");
     const robots = await page.request.get("/robots.txt");
     expect(await robots.text()).toContain(`${productionOrigin}/sitemap.xml`);
@@ -53,13 +54,46 @@ test("approved content, project order, responsive grids and assets", async ({
   ).toBeVisible();
   await expect(page.locator(".impact")).toHaveCount(2);
   await expect(page.locator(".impact").first()).toContainText("more than 50%");
-  await expect(page.locator(".credential-card")).toContainText(
-    "Speedrun: Your First End-to-End Workflow",
+  expect(projects.map((p) => p.slug)).toEqual([
+    "fleetpulse",
+    "fleetcare",
+    "serviceplan",
+    "fatal-figures",
+    "onboarddesk",
+    "cashpilot",
+  ]);
+  await expect(page.locator(".project-card")).toHaveCount(6);
+  await expect(page.locator(".credential-card")).toHaveCount(4);
+  expect(credentials.map((c) => c.id)).toEqual([
+    "f4zh5c5phk8q",
+    "v93rk4vv64bs",
+    "wayfps4ag8q3",
+    "sjwm7wg7jxys",
+  ]);
+  for (const [index, credential] of credentials.entries()) {
+    const card = page.locator(".credential-card").nth(index);
+    await expect(card).toContainText(credential.title);
+    await expect(card.locator(".credential-description")).toHaveText(
+      credential.description,
+    );
+    await expect(card.locator("time")).toHaveAttribute(
+      "datetime",
+      credential.completed,
+    );
+    await expect(card.locator(".credential-id")).toHaveText(
+      `Credential ID: ${credential.id}`,
+    );
+    await expect(
+      card.getByRole("link", { name: /Verify credential/ }),
+    ).toHaveAttribute("href", credential.url);
+  }
+  expect(credentials.map((c) => c.completed)).toEqual(
+    credentials
+      .map((c) => c.completed)
+      .toSorted()
+      .toReversed(),
   );
-  await expect(page.locator(".credential-card")).toContainText("v93rk4vv64bs");
-  await expect(
-    page.getByRole("link", { name: /Verify credential/ }),
-  ).toHaveAttribute("href", "https://verify.skilljar.com/c/v93rk4vv64bs");
+  await expect(page.locator("#certifications")).not.toContainText("Contour");
   await expect(page.locator(".wordmark")).toHaveText("Enamul Haque");
   expect(
     await page.locator("#hero-title > span").evaluate((statement) => {
@@ -130,6 +164,23 @@ test("approved content, project order, responsive grids and assets", async ({
     fullPage: false,
     animations: "disabled",
   });
+  for (const index of [4, 5]) {
+    await page.locator(".project-card").nth(index).scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: path.join(
+        dir,
+        `${info.project.name}-${projects[index].slug}-card.png`,
+      ),
+      fullPage: false,
+      animations: "disabled",
+    });
+  }
+  await page.locator(".credential-card").first().scrollIntoViewIfNeeded();
+  await page.screenshot({
+    path: path.join(dir, `${info.project.name}-credentials.png`),
+    fullPage: false,
+    animations: "disabled",
+  });
   await page.goto("/");
   await page.screenshot({
     path: path.join(dir, `${info.project.name}-home.png`),
@@ -181,12 +232,38 @@ test("section navigation and keyboard-accessible mobile menu", async ({
 test("all case studies load directly, refresh and expose evidence", async ({
   page,
 }, info) => {
-  for (const p of projects) {
+  for (const [index, p] of projects.entries()) {
     const response = await page.goto(`/projects/${p.slug}`);
     expect(response?.status()).toBe(200);
     await expect(page.locator("h1")).toContainText(p.name);
     await expect(page.locator(".workflow-diagram li")).toHaveCount(5);
     await expect(page.locator(".gallery-image")).toHaveCount(2);
+    const nav = page.getByRole("navigation", {
+      name: "Project navigation",
+      exact: true,
+    });
+    await expect(nav.getByRole("link", { name: /Previous:/ })).toHaveAttribute(
+      "href",
+      `/projects/${projects[(index - 1 + projects.length) % projects.length].slug}`,
+    );
+    await expect(nav.getByRole("link", { name: /Next:/ })).toHaveAttribute(
+      "href",
+      `/projects/${projects[(index + 1) % projects.length].slug}`,
+    );
+    for (const evidence of p.evidence) {
+      await expect(
+        page.locator("#validation").getByRole("link", { name: evidence.label }),
+      ).toHaveAttribute("href", `${p.github}/blob/main/${evidence.href}`);
+    }
+    const image = page.locator(".case-image img");
+    await expect(image).toHaveAttribute("alt", p.imageAlt);
+    await expect
+      .poll(() =>
+        image.evaluate(
+          (i: HTMLImageElement) => i.complete && i.naturalWidth > 0,
+        ),
+      )
+      .toBe(true);
     await expect(page.getByRole("link", { name: /Download CV/ })).toHaveCount(
       0,
     );
