@@ -24,7 +24,7 @@ export const skills: Skill[] = [
       "Model enterprise data relationships and connect them to operational actions.",
     groups: [
       "Palantir Foundry · Pipeline Builder · Code Repositories",
-      "Ontology · Object/link modelling · Actions",
+      "Ontology · Object/link modelling · Actions · Contour",
     ],
     links: [
       { label: "Metso experience", href: "#experience" },
@@ -36,8 +36,8 @@ export const skills: Skill[] = [
     statement:
       "Build workflows that turn analytical findings into business action.",
     groups: [
-      "Workshop · TypeScript · APIs · Webhooks",
-      "Work orders · Feedback integration",
+      "Workshop · Quiver · TypeScript · APIs · Webhooks",
+      "Functions · Work orders · Feedback integration",
     ],
     links: [
       { label: "Metso experience", href: "#experience" },
@@ -49,8 +49,8 @@ export const skills: Skill[] = [
     statement:
       "Detect abnormal behaviour, assess condition and explain performance.",
     groups: [
-      "Time series · Anomaly detection · Contextual baselines",
-      "Health scoring · Peer benchmarking · Model evaluation",
+      "Time series · Anomaly detection · Machine learning",
+      "Predictive maintenance · Peer benchmarking",
     ],
     links: [
       { label: "Metso experience", href: "#experience" },
@@ -62,10 +62,13 @@ export const skills: Skill[] = [
     statement:
       "Automate recurring processes, monitor execution and improve resource use.",
     groups: [
-      "Scheduling · Monitoring · Error handling",
+      "Scheduling · Monitoring · Error handling · AI agent",
       "Pipeline optimisation · Feedback loops",
     ],
-    links: [{ label: "Metso experience & impact", href: "#experience" }],
+    links: [
+      { label: "Metso experience & impact", href: "#experience" },
+      { label: "OnboardDesk case study", href: "/projects/onboarddesk" }
+    ],
   },
   {
     title: "Application Development",
@@ -73,7 +76,7 @@ export const skills: Skill[] = [
       "Deliver interactive applications with persistent data and real-time behaviour.",
     groups: [
       "React · TypeScript · Streamlit · Socket.IO",
-      "PostgreSQL · Git/GitHub · Render",
+      "PostgreSQL · Git/GitHub · Render · Vercel",
     ],
     links: [
       {
