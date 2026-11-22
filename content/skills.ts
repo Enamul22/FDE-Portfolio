@@ -10,8 +10,8 @@ export const skills: Skill[] = [
     statement:
       "Connect enterprise systems and transform their data into reliable datasets.",
     groups: [
-      "Python · SQL · PySpark · ETL/ELT",
-      "SAP · Salesforce · Snowflake",
+      "Python · SQL · PySpark · R · ETL/ELT · CI/CD",
+      "SAP · Salesforce · Snowflake · PDM/PLM",
     ],
     links: [
       { label: "Metso experience", href: "#experience" },
