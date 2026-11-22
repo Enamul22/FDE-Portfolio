@@ -313,7 +313,7 @@ export default function Home() {
           <div>
             <p className="contact-copy">
               I’m interested in forward-deployed engineer/data &amp; analytics
-              roles where I can work with engineers and domain experts to turn
+              engineer roles where I can work with engineers and domain experts to turn
               complex operational problems into practical, reliable systems.
             </p>
             <a className="contact-email" href={`mailto:${profile.email}`}>
