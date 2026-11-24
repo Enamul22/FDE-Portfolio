@@ -23,8 +23,8 @@ export const skills: Skill[] = [
     statement:
       "Model enterprise data relationships and connect them to operational actions.",
     groups: [
-      "Palantir Foundry · Pipeline Builder · Code Repositories",
-      "Ontology · Object/link modelling · Actions · Contour",
+      "Pipeline Builder · Code Repositories · Ontology",
+      "Object/link modelling · Actions · Contour · AI FDE",
     ],
     links: [
       { label: "Metso experience", href: "#experience" },
@@ -36,7 +36,7 @@ export const skills: Skill[] = [
     statement:
       "Build workflows that turn analytical findings into business action.",
     groups: [
-      "Workshop · Quiver · TypeScript · APIs · Webhooks",
+      "Workshop · Quiver · TypeScript · Webhooks",
       "Functions · Work orders · Feedback integration",
     ],
     links: [
